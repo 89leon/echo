@@ -1,5 +1,6 @@
 #!/bin/bash
 if [[ ${GIT_BRANCH} == "master" ]]; then
+    echo 'master'
     sudo docker tag echoapp:latest echoapp:1.0."${BUILD_NUMBER}"
 fi
 if [[ ${GIT_BRANCH} == "dev" ]]; then

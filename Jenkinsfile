@@ -12,11 +12,11 @@ pipeline {
   stages {
       stage('Build and Tag'){
           steps{
-           sh '''
-               docker build -t echoapp .
-               chmod +x tag.sh
-               ./tag.sh
-           '''
+           sh 'docker build -t echoapp .'
+           sh 'chmod +x tag.sh'
+           sh './tag.sh'
+               
+               
           }
       }
       /*stage('Publish'){
