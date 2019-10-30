@@ -12,7 +12,7 @@ pipeline {
   stages {
       stage('Build and Tag'){
           steps{
-           sh 'su tomcat'
+           sh 'whoami'
            sh '/var/jenkins_home/bin/gcloud init'
            sh 'docker build -t gcr.io/echo123/echoapp .'
            sh 'chmod +x tag.sh'
