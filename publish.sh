@@ -1,7 +1,6 @@
 #!/bin/bash
 if [[ ${GIT_BRANCH} == "master" ]]; then
-   #$GCLOUD_PATH/gcloud docker push gcr.io/echo123/echoapp:0.1."${BUILD_NUMBER}"
-   /var/jenkins_home/bin/gcloud docker -- push gcr.io/echo123/echoapp:0.1."${BUILD_NUMBER}"
+   gcloud docker -- push gcr.io/echo123/echoapp:0.1."${BUILD_NUMBER}"
 fi
 if [[ ${GIT_BRANCH} == "dev" ]]; then
    $GCLOUD_PATH/gcloud docker -- push gcr.io/echo123/echoapp:dev-"${GIT_COMMIT}"

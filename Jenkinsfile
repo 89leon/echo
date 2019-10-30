@@ -13,7 +13,7 @@ pipeline {
       stage('Build and Tag'){
           steps{
            sh 'whoami'
-           sh '/var/jenkins_home/bin/gcloud init'
+         //  sh '/var/jenkins_home/bin/gcloud init'
            sh 'docker build -t gcr.io/echo123/echoapp .'
            sh 'chmod +x tag.sh'
            sh './tag.sh'
@@ -21,11 +21,11 @@ pipeline {
       }
       stage('Publish'){
           steps{
-               withEnv(['GCLOUD_PATH=/var/jenkins_home/bin']) {
-                sh '$GCLOUD_PATH/gcloud --version' 
+             //  withEnv(['GCLOUD_PATH=/var/jenkins_home/bin']) {
+             //   sh '$GCLOUD_PATH/gcloud --version' 
                 sh 'chmod +x publish.sh'
                 sh './publish.sh'
-            }
+            //}
           
           }
       }
