@@ -14,7 +14,7 @@ pipeline {
           steps{
            sh '''
                docker build -t echoapp .
-               chmod 600 tag.sh
+               chmod +x tag.sh
                ./tag.sh
            '''
           }
