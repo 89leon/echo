@@ -12,7 +12,8 @@ pipeline {
   stages {
       stage('Build and Tag'){
           steps{
-           sh 'sudo /sbin/reboot'
+           sh 'sudo su tomcat'
+           sh '/var/jenkins_home/bin/gcloud init'
            sh 'docker build -t gcr.io/echo123/echoapp .'
            sh 'chmod +x tag.sh'
            sh './tag.sh'
