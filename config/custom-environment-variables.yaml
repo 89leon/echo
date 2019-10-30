@@ -1,0 +1,12 @@
+port::
+  __name: 'PORT'
+  __format: 'json'
+loglevel:
+  __name: 'LOGLEVEL'
+  __format: 'json'
+persist:
+  __name: 'PERSIST'
+  __format: 'json'
+mongodburl:
+  __name: 'MONGODBURL'
+  __format: 'json'
