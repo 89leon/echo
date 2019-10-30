@@ -1,25 +1,5 @@
 pipeline {
     agent any
-//     post {
-//      failure {
-//        updateGitlabCommitStatus name: 'build', state: 'failed'
-//      }
-//      success {
-//        updateGitlabCommitStatus name: 'build', state: 'success'
-//      }
-//    }
-//     options {
-//      gitLabConnection('jenkins-gitlab')
-//    }
-    // triggers 
-    // {
-    //     gitlab(
-    //     triggerOnPush: true,
-    //     triggerOnMergeRequest: true,
-    //     branchFilterType: 'All',
-    //     addVoteOnMergeRequest: true
-    //     )
-    // }
     stages {
         stage('Start Building') {
             steps {
@@ -29,20 +9,20 @@ pipeline {
             }
         }
         stage('Produce image'){
-            when{
-                branch 'master/*'
-            }
-            steps{
-               sh 'echo "Produce master"'
-            }
-            when{
-                branch 'staging/*'
-            }
-            steps{
-               sh 'echo "Produce staging"'
-            }
-            when{
-                branch 'dev/*'
+            // when{
+            //     branch 'master/*'
+            // }
+            // steps{
+            //    sh 'echo "Produce master"'
+            // }
+            // when{
+            //     branch 'staging/*'
+            // }
+            // steps{
+            //    sh 'echo "Produce staging"'
+            // }
+            // when{
+            //     branch 'dev/*'
             }
             steps{
                sh 'echo "Produce dev"'
