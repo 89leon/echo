@@ -11,29 +11,22 @@ pipeline {
   // }
   stages {
       stage('Build and Tag'){
-          when{
-              branch 'master'
-          }
           steps{
-             sh 'docker build -t echoapp .'
-             sh 'docker tag echoapp:latest echoapp:1.0."${BUILD_NUMBER}"'
-          }
-          when{
-              branch 'staging'
-          }
-          steps{
-             sh 'docker build -t echoapp .'
-             sh 'docker tag echoapp:latest echoapp:staging-"${GIT_COMMIT}"'
-          }
-          when{
-              branch 'dev/*'
-          }
-          steps{
-             sh 'docker build -t echoapp .'
-             sh 'docker tag echoapp:latest echoapp:dev-"${GIT_COMMIT}"'
+           sh '''
+               docker build -t echoapp .
+               if [[ ${GIT_BRANCH} == "master" ]]; then
+                   sudo docker tag echoapp:latest echoapp:1.0."${BUILD_NUMBER}"
+               fi
+               if [[ ${GIT_BRANCH} == "dev" ]]; then
+                   sudo docker tag echoapp:latest echoapp:dev-"${GIT_COMMIT}"
+               fi
+               if [[ ${GIT_BRANCH} == "staging" ]]; then
+                   sudo docker tag echoapp:latest echoapp:staging-"${GIT_COMMIT}"
+               fi
+           '''
           }
       }
-      stage('Publish'){
+      /*stage('Publish'){
           when{
               branch 'master'
           }
@@ -55,6 +48,6 @@ pipeline {
              //sh 'docker tag echoapp:latest echoapp:dev-"${GIT_COMMIT}"'
              sh 'echo deploy'
           }
-      }
+      }*/
   }
 }
