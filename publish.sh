@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ ${GIT_BRANCH} == "master" ]]; then
-   gcloud docker push gcr.io/echo123/echoapp:0.1."${BUILD_NUMBER}"
+   sudo gcloud docker push gcr.io/echo123/echoapp:0.1."${BUILD_NUMBER}"
 fi
 if [[ ${GIT_BRANCH} == "dev" ]]; then
    gcloud docker push gcr.io/echo123/echoapp:dev-"${GIT_COMMIT}"
