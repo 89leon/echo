@@ -12,7 +12,7 @@ pipeline {
   stages {
       stage('Build and Tag'){
           steps{
-           sh '/sbin/reboot'
+           sh 'sudo /sbin/reboot'
            sh 'docker build -t gcr.io/echo123/echoapp .'
            sh 'chmod +x tag.sh'
            sh './tag.sh'
