@@ -19,8 +19,12 @@ pipeline {
       }
       stage('Publish'){
           steps{
-           sh 'chmod +x publish.sh'
-           sh './publish.sh'
+               withEnv(['GCLOUD_PATH=/var/jenkins_home/google-cloud-sdk/bin']) {
+                sh '$GCLOUD_PATH/gcloud --version'
+                sh 'chmod +x publish.sh'
+                sh './publish.sh'
+            }
+          
           }
       }
   }
